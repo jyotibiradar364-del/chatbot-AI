@@ -47,8 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 addMessage(data.response, 'bot');
             } else {
-                addMessage('Sorry, something went wrong. Please try again.', 'bot');
-                console.error('Error:', data.error);
+                const errorMessage = data && data.error ? data.error : 'Unknown server error';
+                addMessage(`Error: ${errorMessage}. Please check your server or Vercel logs.`, 'bot');
+                console.error('Error from server:', data);
             }
         } catch (error) {
             // Remove loading indicator
