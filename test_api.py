@@ -1,5 +1,9 @@
 import requests
 import time
+import sys
+
+# Windows console cp1252 error workaround
+sys.stdout.reconfigure(encoding='utf-8')
 
 def test_chat():
     url = 'http://127.0.0.1:5000/api/chat'
